@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  transition: all 0.2s;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.like-button-not-liked {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.like-button-not-liked:hover {
+  background-color: #e5e7eb;
+}
+
+.like-button-liked {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.like-button-liked:hover {
+  background-color: #fecaca;
+}
+
+.like-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.like-svg {
+  height: 20px;
+  width: 20px;
+}
+
+.like-count {
+  font-weight: 500;
+}
+
+.like-text {
+  font-size: 14px;
+}
+
+.post-article {
+  max-width: 672px;
+  margin: 0 auto;
+  padding: 24px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.post-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #1f2937;
+}
+
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+.post-content {
+  color: #374151;
+  line-height: 1.625;
+  margin-bottom: 32px;
+}
+
+.post-divider {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 24px;
+}
+
+.home-main {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 96px;
+}
+
+.home-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 32px;
+  color: #1f2937;
+}
+
+.home-description {
+  color: #4b5563;
+  margin-bottom: 32px;
+  text-align: center;
+  max-width: 448px;
+}
+
+.home-link {
+  padding: 12px 24px;
+  background-color: #2563eb;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.home-link:hover {
+  background-color: #1d4ed8;
+}
+
+.post-page-main {
+  padding: 48px 16px;
+}
