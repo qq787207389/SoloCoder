@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消消乐 - Match 3 Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 消消乐</h1>
+        
+        <div class="game-info">
+            <div class="info-item">
+                <span class="label">分数</span>
+                <span class="value" id="score">0</span>
+            </div>
+            <div class="info-item">
+                <span class="label">剩余步数</span>
+                <span class="value" id="moves">30</span>
+            </div>
+            <div class="info-item">
+                <span class="label">连击</span>
+                <span class="value" id="combo">0</span>
+            </div>
+        </div>
+
+        <div class="game-container">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <button id="hintBtn" class="btn">
+                💡 提示
+            </button>
+            <button id="shuffleBtn" class="btn">
+                🔀 洗牌
+            </button>
+            <button id="resetBtn" class="btn">
+                🔄 重新开始
+            </button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #FF6B6B, #cc5555);"></div>
+                <span>红色</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #4ECDC4, #3ba89f);"></div>
+                <span>青色</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #45B7D1, #3792a7);"></div>
+                <span>蓝色</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #96CEB4, #78a490);"></div>
+                <span>绿色</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #FFEAA7, #ccbb86);"></div>
+                <span>黄色</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #DDA0DD, #b080b0);"></div>
+                <span>紫色</span>
+            </div>
+        </div>
+
+        <div class="special-info">
+            <h3>🎯 特殊方块说明</h3>
+            <ul>
+                <li><strong>横向火箭</strong>：消除一整行（4个横向匹配）</li>
+                <li><strong>纵向火箭</strong>：消除一整列（4个纵向匹配）</li>
+                <li><strong>炸弹</strong>：消除周围区域（随机触发）</li>
+                <li><strong>彩虹球</strong>：消除所有同色方块（5个以上匹配）</li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
