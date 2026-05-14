@@ -132,7 +132,7 @@ export interface GameState {
   currentMap: string
   mapData: MapCell[][]
   droppedItems: { id: string; item: Equipment; position: Position }[]
-  announcements: string[]
+  announcements: { id: number; message: string; time: number }[]
   gameTime: number
   sabakState: {
     isWar: boolean

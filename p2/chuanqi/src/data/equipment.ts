@@ -1,4 +1,4 @@
-import { ItemType, Quality } from '../types'
+import { ItemType } from '../types'
 
 export interface EquipmentTemplate {
   id: string

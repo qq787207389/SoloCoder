@@ -8,7 +8,7 @@ class Game {
   private lastTime: number = 0
   private keys: Set<string> = new Set()
   private selectedTarget: string | null = null
-  private castStartTime: number = 0
+
 
   constructor(canvas: HTMLCanvasElement) {
     this.renderer = new CanvasRenderer(canvas)
@@ -145,7 +145,7 @@ class Game {
     }
   }
 
-  private updateMonsterAI(deltaTime: number): void {
+  private updateMonsterAI(_deltaTime: number): void {
     const state = useGameStore.getState()
     
     state.monsters.forEach(monster => {
@@ -228,6 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
     })
+
+    setTimeout(() => {
+      const loading = document.getElementById('loading')
+      if (loading) {
+        loading.style.display = 'none'
+      }
+    }, 500)
   }
 })
 

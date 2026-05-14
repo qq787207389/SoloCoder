@@ -128,7 +128,7 @@ export class CanvasRenderer {
 
       this.ctx.beginPath()
       this.ctx.arc(x, y, 8, 0, Math.PI * 2)
-      this.ctx.fillStyle = qualityColor[drop.item.quality] || '#999'
+      this.ctx.fillStyle = qualityColor[drop.item.quality as keyof typeof qualityColor] || '#999'
       this.ctx.fill()
       this.ctx.strokeStyle = '#fff'
       this.ctx.lineWidth = 1
@@ -241,7 +241,7 @@ export class CanvasRenderer {
       this.ctx.fillStyle = '#fff'
       this.ctx.font = 'bold 14px Arial'
       this.ctx.textAlign = 'center'
-      this.ctx.fillText(index + 1, x + 20, y + 25)
+      this.ctx.fillText(String(index + 1), x + 20, y + 25)
 
       this.ctx.font = '9px Arial'
       this.ctx.fillText(skill.name.substring(0, 4), x + 20, y + 38)
@@ -260,7 +260,7 @@ export class CanvasRenderer {
     this.ctx.restore()
   }
 
-  renderAnnouncements(announcements: any[]): void {
+  renderAnnouncements(announcements: { id: number; message: string; time: number }[]): void {
     this.ctx.save()
     
     announcements.forEach((ann, index) => {

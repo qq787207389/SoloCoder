@@ -1,4 +1,4 @@
-import { Affix, Quality, BaseStats } from '../types'
+import { Affix, Quality } from '../types'
 
 export const affixPool: Omit<Affix, 'id'>[] = [
   { name: '力量', stat: 'attack', value: 5 },

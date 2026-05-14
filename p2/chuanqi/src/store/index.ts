@@ -4,7 +4,7 @@ import { classBaseStats, classSkills } from '../data/classes'
 import { generateMap } from '../data/map'
 import { monsterTemplates, createMonster } from '../data/monsters'
 import { generateEquipment } from '../utils/equipmentGenerator'
-import { enhanceConfigs, enhanceBonus } from '../data/enhance'
+import { enhanceConfigs } from '../data/enhance'
 import { dropTables, goldDrops } from '../data/drops'
 
 interface GameStore extends GameState {
@@ -112,7 +112,7 @@ const useGameStore = create<GameStore>((set, get) => ({
   },
 
   useSkill: (skillIndex: number, targetId: string | null) => {
-    const { player, monsters } = get()
+    const { player } = get()
     const skill = player.skills[skillIndex]
     
     if (!skill || skill.currentCooldown > 0 || player.stats.mp < skill.mpCost) {
@@ -446,10 +446,10 @@ const useGameStore = create<GameStore>((set, get) => ({
     const goldRange = goldDrops[dropTable]
     const gold = Math.floor(Math.random() * (goldRange.max - goldRange.min) + goldRange.min)
     
-    set(state => ({
+    set(s => ({
       player: {
-        ...state.player,
-        gold: state.player.gold + gold
+        ...s.player,
+        gold: s.player.gold + gold
       }
     }))
     
@@ -503,7 +503,7 @@ const useGameStore = create<GameStore>((set, get) => ({
   updateMonsterPositions: (deltaTime: number) => {
     const { player, monsters } = get()
     
-    set(state => ({
+    set(_state => ({
       monsters: monsters.map(monster => {
         if (monster.aiState === 'dead') return monster
         

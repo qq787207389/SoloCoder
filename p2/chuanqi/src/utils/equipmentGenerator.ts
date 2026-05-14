@@ -1,6 +1,6 @@
 import { Equipment, Quality, Affix, BaseStats } from '../types'
 import { affixPool, qualityAffixCount, qualityMultiplier } from '../data/affixes'
-import { equipmentTemplates, EquipmentTemplate } from '../data/equipment'
+import { equipmentTemplates } from '../data/equipment'
 
 export function generateEquipment(templateId: string, quality: Quality): Equipment {
   const template = equipmentTemplates.find(t => t.id === templateId)

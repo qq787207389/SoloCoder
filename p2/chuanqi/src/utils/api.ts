@@ -19,7 +19,7 @@ export async function fetchGuildInfo(guildId: string): Promise<any> {
   })
 }
 
-export async function submitEnhanceRequest(equipmentId: string, useProtect: boolean): Promise<any> {
+export async function submitEnhanceRequest(_equipmentId: string, _useProtect: boolean): Promise<any> {
   return simulateApiDelay({
     success: Math.random() > 0.3,
     newLevel: 5,
