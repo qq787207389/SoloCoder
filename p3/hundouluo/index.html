@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Contra - HTML5 Canvas 2D Shooting Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+        }
+
+        #gameContainer {
+            position: relative;
+            border: 3px solid #ffd700;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        #gameCanvas {
+            display: block;
+            background: #1a1a2e;
+        }
+
+        #title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        #controls {
+            margin-top: 20px;
+            padding: 15px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        #controls h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        #controls p {
+            font-size: 13px;
+            color: #aaa;
+            margin: 5px 0;
+        }
+
+        #controls span {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 30px;
+            margin-top: 10px;
+        }
+
+        .control-group {
+            text-align: center;
+        }
+
+        .key {
+            display: inline-block;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin: 2px;
+            font-size: 12px;
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">SUPER CONTRA</h1>
+    
+    <div id="gameContainer">
+        <canvas id="gameCanvas" width="960" height="540"></canvas>
+    </div>
+
+    <div id="controls">
+        <h3>CONTROLS</h3>
+        <div class="control-row">
+            <div class="control-group">
+                <p><span>Move:</span></p>
+                <p><span class="key">W</span><span class="key">A</span><span class="key">S</span><span class="key">D</span> or <span class="key">↑</span><span class="key">←</span><span class="key">↓</span><span class="key">→</span></p>
+            </div>
+            <div class="control-group">
+                <p><span>Shoot:</span> <span class="key">J</span> or <span class="key">Z</span></p>
+                <p><span>Bomb:</span> <span class="key">K</span> or <span class="key">X</span></p>
+            </div>
+            <div class="control-group">
+                <p><span>Weapons:</span></p>
+                <p><span class="key">1</span>Rifle <span class="key">2</span>Shotgun <span class="key">3</span>Machinegun <span class="key">4</span>Laser</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
