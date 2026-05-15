@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>钢铁战神 - 坦克大战</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    
+    #gameContainer {
+      position: relative;
+    }
+    
+    #gameCanvas {
+      display: block;
+      border: 2px solid #ffd700;
+      border-radius: 4px;
+    }
+    
+    #uiCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    
+    #editorControls {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: -200px;
+      background: #16213e;
+      padding: 15px;
+      border-radius: 8px;
+      border: 2px solid #ffd700;
+    }
+    
+    #editorControls.active {
+      display: block;
+    }
+    
+    .tileBtn {
+      width: 40px;
+      height: 40px;
+      margin: 5px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      display: inline-block;
+    }
+    
+    .tileBtn.selected {
+      border-color: #ffd700;
+      box-shadow: 0 0 10px #ffd700;
+    }
+    
+    .controlBtn {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+      background: #ffd700;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #1a1a2e;
+    }
+    
+    .controlBtn:hover {
+      background: #ffed4a;
+    }
+  </style>
+</head>
+<body>
+  <div id="gameContainer">
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <canvas id="uiCanvas" width="800" height="600"></canvas>
+    
+    <div id="editorControls">
+      <div style="color: #ffd700; margin-bottom: 10px; font-weight: bold;">地形选择</div>
+      <div class="tileBtn selected" style="background: #b5651d;" data-tile="1"></div>
+      <div class="tileBtn" style="background: #a0a0a0;" data-tile="2"></div>
+      <div class="tileBtn" style="background: #4a90d9;" data-tile="3"></div>
+      <div class="tileBtn" style="background: #228b22;" data-tile="4"></div>
+      <div class="tileBtn" style="background: #ffff00;" data-tile="5"></div>
+      <div class="tileBtn" style="background: #000;" data-tile="0"></div>
+      <button class="controlBtn" id="undoBtn">撤销 (Z)</button>
+      <button class="controlBtn" id="redoBtn">重做 (Y)</button>
+      <button class="controlBtn" id="clearBtn">清空</button>
+      <button class="controlBtn" id="saveBtn">导出地图</button>
+      <button class="controlBtn" id="loadBtn">导入地图</button>
+      <button class="controlBtn" id="playBtn">开始游戏</button>
+      <button class="controlBtn" id="exitBtn">退出编辑器</button>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

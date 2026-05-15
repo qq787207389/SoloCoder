@@ -1,0 +1,36 @@
+{
+  "game": {
+    "title": "钢铁战神",
+    "fps": 60,
+    "tileSize": 32,
+    "mapWidth": 13,
+    "mapHeight": 13,
+    "screenWidth": 800,
+    "screenHeight": 600
+  },
+  "tank": {
+    "playerSpeed": 2,
+    "enemySpeed": 1.5,
+    "bossSpeed": 1,
+    "bulletSpeed": 6,
+    "fireCooldown": 500,
+    "maxBullets": 1,
+    "baseHealth": 1
+  },
+  "powerup": {
+    "duration": 10000,
+    "spawnInterval": 15000,
+    "shieldDuration": 8000,
+    "invincibleDuration": 6000,
+    "freezeDuration": 5000
+  },
+  "waves": {
+    "enemiesPerWave": 4,
+    "bossWaveInterval": 5,
+    "spawnInterval": 3000
+  },
+  "base": {
+    "maxHealth": 3,
+    "position": { "x": 6, "y": 12 }
+  }
+}
