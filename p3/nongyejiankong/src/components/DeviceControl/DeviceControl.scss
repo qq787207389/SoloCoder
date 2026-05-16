@@ -1,0 +1,256 @@
+.device-control {
+  background: linear-gradient(145deg, #1e2a3a, #151d29);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin: 0 0 20px 0;
+  }
+  
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  &__card {
+    background: rgba(45, 55, 72, 0.5);
+    border-radius: 12px;
+    padding: 16px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &--on {
+      border-color: rgba(72, 187, 120, 0.3);
+      background: rgba(72, 187, 120, 0.1);
+    }
+    
+    &--confirm {
+      animation: confirmPulse 1s ease-out;
+    }
+    
+    &--error {
+      animation: errorShake 0.5s ease-out;
+    }
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  
+  &__icon {
+    font-size: 24px;
+  }
+  
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  &__status-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #718096;
+    
+    &--on {
+      background: #48bb78;
+      box-shadow: 0 0 8px rgba(72, 187, 120, 0.6);
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+  }
+  
+  &__status-text {
+    font-size: 12px;
+    color: #a0aec0;
+  }
+  
+  &__info {
+    margin-bottom: 16px;
+  }
+  
+  &__info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  &__info-label {
+    font-size: 12px;
+    color: #718096;
+  }
+  
+  &__info-value {
+    font-size: 12px;
+    font-weight: 600;
+    color: #e2e8f0;
+  }
+  
+  &__toggle {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #4a5568;
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover:not(:disabled) {
+      background: #5a6578;
+      transform: translateY(-2px);
+    }
+    
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+    
+    &--on {
+      background: linear-gradient(135deg, #48bb78, #38a169);
+      
+      &:hover:not(:disabled) {
+        background: linear-gradient(135deg, #5cc888, #48bb78);
+      }
+    }
+    
+    &--loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  
+  &__spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+  
+  &__toast {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    animation: toastIn 0.3s ease-out;
+    z-index: 10;
+    
+    &--success {
+      background: #48bb78;
+      color: white;
+    }
+    
+    &--error {
+      background: #e53e3e;
+      color: white;
+    }
+  }
+}
+
+@keyframes statusPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(72, 187, 120, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(72, 187, 120, 0.9);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes confirmPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(72, 187, 120, 0);
+  }
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-5px);
+  }
+  40%, 80% {
+    transform: translateX(5px);
+  }
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@media (min-width: 2560px) {
+  .device-control {
+    padding: 32px;
+    
+    &__title {
+      font-size: 22px;
+    }
+    
+    &__grid {
+      gap: 24px;
+    }
+    
+    &__card {
+      padding: 24px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .device-control {
+    padding: 16px;
+    
+    &__title {
+      font-size: 16px;
+    }
+    
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}

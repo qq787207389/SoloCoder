@@ -1,0 +1,131 @@
+.sensor-card {
+  background: linear-gradient(145deg, #1e2a3a, #151d29);
+  border-radius: 12px;
+  padding: 20px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  min-width: 200px;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  &--warning {
+    animation: warningPulse 2s ease-in-out infinite;
+  }
+  
+  &--danger {
+    animation: dangerPulse 1s ease-in-out infinite;
+  }
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  &__name {
+    font-size: 14px;
+    color: #a0aec0;
+    font-weight: 500;
+  }
+  
+  &__status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: white;
+    font-weight: 600;
+  }
+  
+  &__value-container {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  
+  &__value {
+    font-size: 42px;
+    font-weight: 700;
+    font-family: 'Courier New', monospace;
+  }
+  
+  &__unit {
+    font-size: 16px;
+    color: #718096;
+  }
+  
+  &__threshold {
+    margin-bottom: 15px;
+  }
+  
+  &__threshold-bar {
+    position: relative;
+    height: 6px;
+    background: #2d3748;
+    border-radius: 3px;
+    overflow: visible;
+    margin-bottom: 8px;
+  }
+  
+  &__threshold-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+  }
+  
+  &__threshold-marker {
+    position: absolute;
+    top: -4px;
+    width: 2px;
+    height: 14px;
+    background: #f39c12;
+    
+    &--min {
+      background: #3498db;
+    }
+    
+    &--max {
+      background: #e74c3c;
+    }
+  }
+  
+  &__threshold-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #718096;
+  }
+  
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  &__time {
+    font-size: 11px;
+    color: #4a5568;
+  }
+}
+
+@keyframes warningPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(243, 156, 18, 0);
+  }
+}
+
+@keyframes dangerPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(231, 76, 60, 0);
+  }
+}

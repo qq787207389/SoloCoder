@@ -1,0 +1,85 @@
+.time-series-chart {
+  background: linear-gradient(145deg, #1e2a3a, #151d29);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin: 0;
+  }
+  
+  &__legend {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  &__legend-btn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background: #2d3748;
+    color: #718096;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: #3d4a5c;
+    }
+    
+    &--active {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  &__chart {
+    flex: 1;
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 2560px) {
+  .time-series-chart {
+    padding: 32px;
+    
+    &__title {
+      font-size: 22px;
+    }
+    
+    &__legend-btn {
+      padding: 8px 18px;
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .time-series-chart {
+    padding: 16px;
+    
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    &__title {
+      font-size: 16px;
+    }
+  }
+}

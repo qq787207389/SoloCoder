@@ -1,0 +1,78 @@
+.greenhouse-3d {
+  background: linear-gradient(145deg, #1e2a3a, #151d29);
+  border-radius: 16px;
+  padding: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  &__title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin: 0 0 16px 0;
+  }
+  
+  &__canvas {
+    flex: 1;
+    min-height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: grab;
+    
+    &:active {
+      cursor: grabbing;
+    }
+  }
+  
+  &__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #2d3748;
+  }
+  
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #a0aec0;
+  }
+  
+  &__legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 2560px) {
+  .greenhouse-3d {
+    padding: 32px;
+    
+    &__title {
+      font-size: 22px;
+    }
+    
+    &__legend-item {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .greenhouse-3d {
+    padding: 16px;
+    
+    &__title {
+      font-size: 16px;
+    }
+    
+    &__legend {
+      gap: 10px;
+    }
+  }
+}
