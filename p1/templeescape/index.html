@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Temple Escape - 3D Endless Runner</title>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="hud" class="hud hidden">
+        <div class="hud-left">
+          <div class="score-display">
+            <span>🏆</span>
+            <span id="score-value">0</span>
+          </div>
+          <div class="distance-display">
+            <span>📍</span>
+            <span id="distance-value">0m</span>
+          </div>
+        </div>
+        <div class="hud-right">
+          <div class="coins-display">
+            <span>🪙</span>
+            <span id="coins-value">0</span>
+          </div>
+          <div class="speed-bar-container">
+            <div id="speed-bar" class="speed-bar" style="width: 0%"></div>
+          </div>
+          <div id="powerup-timers" class="powerup-timers"></div>
+        </div>
+      </div>
+
+      <div id="menu-screen" class="menu-screen">
+        <h1>🏛️ TEMPLE ESCAPE</h1>
+        <p class="subtitle">An Endless 3D Runner Adventure</p>
+        <div class="high-score" id="high-score-menu">High Score: 0</div>
+        <button id="start-btn" class="btn btn-primary">Start Game</button>
+        <div class="controls-info">
+          <div class="control-key"><span class="key">←→</span> Move</div>
+          <div class="control-key"><span class="key">↑</span> Jump</div>
+          <div class="control-key"><span class="key">↓</span> Slide</div>
+          <div class="control-key">Swipe for Touch</div>
+        </div>
+      </div>
+
+      <div id="game-over-screen" class="game-over-screen hidden">
+        <h1>GAME OVER</h1>
+        <p class="subtitle">You ran into trouble!</p>
+        <div class="game-stats">
+          <div class="stat-row">
+            <span class="stat-label">Score</span>
+            <span class="stat-value" id="final-score">0</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Distance</span>
+            <span class="stat-value" id="final-distance">0m</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-label">Coins</span>
+            <span class="stat-value" id="final-coins">0</span>
+          </div>
+        </div>
+        <div class="high-score">High Score: <span id="high-score">0</span></div>
+        <button id="resurrect-btn" class="btn btn-resurrect">💎 Resurrect</button>
+        <div id="resurrect-cost" class="resurrect-cost">Cost: 50 coins</div>
+        <button id="restart-btn" class="btn btn-primary">🔄 Play Again</button>
+        <button id="menu-btn" class="btn btn-secondary">🏠 Main Menu</button>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
