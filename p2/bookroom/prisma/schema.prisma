@@ -1,0 +1,350 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum ActivityCategory {
+  READING
+  LECTURE
+  WORKSHOP
+  EXHIBITION
+  OTHER
+}
+
+enum ActivityStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+
+enum RegistrationStatus {
+  CONFIRMED
+  WAITLIST
+  CANCELLED
+  ATTENDED
+}
+
+enum CircleRole {
+  MEMBER
+  MODERATOR
+  ADMIN
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole  @default(USER)
+  bio           String?
+  location      String?
+  latitude      Float?
+  longitude     Float?
+  interests     String[]
+  socialEnabled Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts       Account[]
+  sessions       Session[]
+  activities     Activity[]
+  registrations  Registration[]
+  createdCircles Circle[]
+  circleMembers  CircleMember[]
+  posts          Post[]
+  comments       Comment[]
+  postLikes      PostLike[]
+  checkIns       CheckIn[]
+  sentMessages   ChatMessage[] @relation("sender")
+  receivedMessages ChatMessage[] @relation("receiver")
+  reports        Report[]
+
+  @@index([email])
+  @@index([location])
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Bookstore {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  address     String
+  latitude    Float
+  longitude   Float
+  coverImage  String?
+  phone       String?
+  openHours   String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  activities Activity[]
+
+  @@index([latitude, longitude])
+}
+
+model Activity {
+  id          String           @id @default(cuid())
+  title       String
+  description String           @db.Text
+  coverImage  String?
+  category    ActivityCategory
+  status      ActivityStatus   @default(DRAFT)
+  maxParticipants Int
+  startTime   DateTime
+  endTime     DateTime
+  location    String
+  latitude    Float?
+  longitude   Float?
+  bookstoreId String?
+  creatorId   String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+
+  bookstore     Bookstore?       @relation(fields: [bookstoreId], references: [id])
+  creator       User             @relation(fields: [creatorId], references: [id])
+  registrations Registration[]
+
+  @@index([startTime])
+  @@index([category])
+  @@index([status])
+  @@index([bookstoreId])
+  @@index([creatorId])
+}
+
+model Registration {
+  id         String             @id @default(cuid())
+  activityId String
+  userId     String
+  status     RegistrationStatus @default(CONFIRMED)
+  waitlistNumber Int?
+  registeredAt DateTime         @default(now())
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  activity Activity @relation(fields: [activityId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ticket   Ticket?
+
+  @@unique([activityId, userId])
+  @@index([activityId])
+  @@index([userId])
+  @@index([status])
+}
+
+model Ticket {
+  id             String   @id @default(cuid())
+  registrationId String   @unique
+  qrCode         String
+  used           Boolean  @default(false)
+  usedAt         DateTime?
+  createdAt      DateTime @default(now())
+
+  registration Registration @relation(fields: [registrationId], references: [id], onDelete: Cascade)
+
+  @@index([registrationId])
+}
+
+model Circle {
+  id          String   @id @default(cuid())
+  name        String
+  description String?  @db.Text
+  coverImage  String?
+  tags        String[]
+  isPrivate   Boolean  @default(false)
+  creatorId   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  creator    User           @relation(fields: [creatorId], references: [id])
+  members    CircleMember[]
+  posts      Post[]
+  readingTasks ReadingTask[]
+
+  @@index([creatorId])
+  @@index([tags])
+}
+
+model CircleMember {
+  id        String     @id @default(cuid())
+  circleId  String
+  userId    String
+  role      CircleRole @default(MEMBER)
+  joinedAt  DateTime   @default(now())
+  createdAt DateTime   @default(now())
+
+  circle Circle @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([circleId, userId])
+  @@index([circleId])
+  @@index([userId])
+}
+
+model Post {
+  id        String   @id @default(cuid())
+  circleId  String
+  userId    String
+  content   String   @db.Text
+  images    String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  circle   Circle    @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  user     User      @relation(fields: [userId], references: [id])
+  comments Comment[]
+  likes    PostLike[]
+  reports  Report[]
+
+  @@index([circleId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  postId    String
+  userId    String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user   User @relation(fields: [userId], references: [id])
+
+  @@index([postId])
+  @@index([userId])
+}
+
+model PostLike {
+  id        String   @id @default(cuid())
+  postId    String
+  userId    String
+  createdAt DateTime @default(now())
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([postId, userId])
+  @@index([postId])
+  @@index([userId])
+}
+
+model ReadingTask {
+  id          String   @id @default(cuid())
+  circleId    String
+  title       String
+  description String?  @db.Text
+  bookTitle   String
+  bookAuthor  String?
+  startDate   DateTime
+  endDate     DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  circle   Circle    @relation(fields: [circleId], references: [id], onDelete: Cascade)
+  checkIns CheckIn[]
+
+  @@index([circleId])
+}
+
+model CheckIn {
+  id            String   @id @default(cuid())
+  readingTaskId String
+  userId        String
+  checkInDate   DateTime
+  note          String?
+  pageNumber    Int?
+  createdAt     DateTime @default(now())
+
+  readingTask ReadingTask @relation(fields: [readingTaskId], references: [id], onDelete: Cascade)
+  user        User        @relation(fields: [userId], references: [id])
+
+  @@unique([readingTaskId, userId, checkInDate])
+  @@index([readingTaskId])
+  @@index([userId])
+}
+
+model ChatMessage {
+  id         String   @id @default(cuid())
+  senderId   String
+  receiverId String
+  content    String   @db.Text
+  type       String   @default("text")
+  read       Boolean  @default(false)
+  readAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  sender   User @relation("sender", fields: [senderId], references: [id], onDelete: Cascade)
+  receiver User @relation("receiver", fields: [receiverId], references: [id], onDelete: Cascade)
+
+  @@index([senderId, receiverId])
+  @@index([createdAt])
+}
+
+model Report {
+  id          String   @id @default(cuid())
+  postId      String?
+  reporterId  String
+  reason      String
+  description String?  @db.Text
+  status      String   @default("PENDING")
+  reviewedAt  DateTime?
+  reviewedBy  String?
+  createdAt   DateTime @default(now())
+
+  post     Post?   @relation(fields: [postId], references: [id], onDelete: SetNull)
+  reporter User    @relation(fields: [reporterId], references: [id])
+
+  @@index([postId])
+  @@index([reporterId])
+  @@index([status])
+}
