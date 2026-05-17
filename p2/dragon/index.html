@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>勇者传说 - Dragon Quest Clone</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Courier New', monospace;
+      color: #fff;
+    }
+
+    #game-container {
+      position: relative;
+      border: 4px solid #4a4a6a;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    #game-canvas {
+      display: block;
+      image-rendering: pixelated;
+      image-rendering: crisp-edges;
+    }
+
+    #hud {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      border: 2px solid #ffd700;
+      border-radius: 4px;
+      font-size: 12px;
+      min-width: 150px;
+    }
+
+    .stat-bar {
+      width: 100%;
+      height: 8px;
+      background: #333;
+      margin: 4px 0;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .stat-bar-fill {
+      height: 100%;
+      transition: width 0.3s;
+    }
+
+    .hp-bar { background: #ff4444; }
+    .mp-bar { background: #4444ff; }
+
+    #message-box {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.9);
+      padding: 15px;
+      border: 2px solid #ffd700;
+      border-radius: 4px;
+      font-size: 14px;
+      line-height: 1.5;
+      min-height: 60px;
+      display: none;
+    }
+
+    #menu-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      padding: 30px;
+    }
+
+    .menu-title {
+      text-align: center;
+      font-size: 24px;
+      color: #ffd700;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px #000;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .menu-item {
+      background: #2a2a4a;
+      border: 2px solid #4a4a6a;
+      padding: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .menu-item:hover {
+      border-color: #ffd700;
+      background: #3a3a5a;
+    }
+
+    .menu-item.selected {
+      border-color: #ffd700;
+      background: #3a3a5a;
+    }
+
+    #controls {
+      position: absolute;
+      bottom: 100px;
+      left: 10px;
+      font-size: 10px;
+      color: #888;
+    }
+
+    .battle-menu {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .battle-btn {
+      background: #2a2a4a;
+      border: 2px solid #4a4a6a;
+      color: #fff;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .battle-btn:hover {
+      border-color: #ffd700;
+    }
+
+    .battle-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="game-canvas" width="640" height="480"></canvas>
+    
+    <div id="hud">
+      <div>Lv: <span id="player-level">1</span> | 💰 <span id="player-gold">0</span></div>
+      <div>HP</div>
+      <div class="stat-bar">
+        <div class="stat-bar-fill hp-bar" id="hp-bar" style="width: 100%"></div>
+      </div>
+      <div><span id="hp-text">100/100</span></div>
+      <div>MP</div>
+      <div class="stat-bar">
+        <div class="stat-bar-fill mp-bar" id="mp-bar" style="width: 100%"></div>
+      </div>
+      <div><span id="mp-text">50/50</span></div>
+    </div>
+
+    <div id="message-box"></div>
+
+    <div id="menu-overlay">
+      <div class="menu-title">主菜单</div>
+      <div class="menu-grid" id="menu-grid">
+        <div class="menu-item" data-action="status">状态</div>
+        <div class="menu-item" data-action="items">道具</div>
+        <div class="menu-item" data-action="equip">装备</div>
+        <div class="menu-item" data-action="quest">任务</div>
+        <div class="menu-item" data-action="save">存档</div>
+        <div class="menu-item" data-action="load">读档</div>
+      </div>
+      <div style="text-align: center; margin-top: 30px; color: #888;">按 ESC 或 X 关闭菜单</div>
+    </div>
+
+    <div id="controls">
+      方向键/WASD: 移动 | 空格/回车: 交互 | X/M: 菜单 | Q: 任务
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
