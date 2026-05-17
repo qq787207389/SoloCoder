@@ -1,0 +1,138 @@
+{
+  "grid": {
+    "width": 60,
+    "height": 40,
+    "cellSize": 16
+  },
+  "snake": {
+    "initialLength": 3,
+    "baseSpeed": 150,
+    "speedIncrement": 0.05,
+    "speedIncrementInterval": 5
+  },
+  "gameModes": {
+    "classic": {
+      "name": "经典模式",
+      "maxFoods": 5,
+      "obstacleCount": 10
+    },
+    "battle": {
+      "name": "双人对战",
+      "maxFoods": 8,
+      "obstacleCount": 15
+    },
+    "ai": {
+      "name": "AI挑战",
+      "maxFoods": 10,
+      "obstacleCount": 20,
+      "aiCount": 2
+    }
+  },
+  "foodTypes": {
+    "normal": {
+      "name": "普通食物",
+      "color": "#4ade80",
+      "growth": 1,
+      "score": 10,
+      "duration": 0,
+      "spawnChance": 0.6
+    },
+    "golden": {
+      "name": "金色食物",
+      "color": "#fbbf24",
+      "growth": 3,
+      "score": 50,
+      "duration": 5000,
+      "spawnChance": 0.1,
+      "blink": true
+    },
+    "poison": {
+      "name": "毒蘑菇",
+      "color": "#ef4444",
+      "growth": -2,
+      "score": -30,
+      "duration": 2000,
+      "spawnChance": 0.1,
+      "effect": "slow"
+    },
+    "speed": {
+      "name": "速度果实",
+      "color": "#8b5cf6",
+      "growth": 0,
+      "score": 20,
+      "duration": 3000,
+      "spawnChance": 0.1,
+      "effect": "speed"
+    },
+    "phase": {
+      "name": "穿墙果实",
+      "color": "#06b6d4",
+      "growth": 0,
+      "score": 25,
+      "duration": 5000,
+      "spawnChance": 0.1,
+      "effect": "phase"
+    }
+  },
+  "themes": {
+    "classic": {
+      "name": "经典黑底",
+      "background": "#0a0a0a",
+      "grid": "#1a1a1a",
+      "snakeHead": "#22c55e",
+      "snakeBody": "#16a34a",
+      "obstacle": "#4b5563"
+    },
+    "grass": {
+      "name": "草地自然",
+      "background": "#1a3a1a",
+      "grid": "#2d4a2d",
+      "snakeHead": "#65a30d",
+      "snakeBody": "#4d7c0f",
+      "obstacle": "#78350f"
+    },
+    "cyberpunk": {
+      "name": "赛博朋克",
+      "background": "#0f0f23",
+      "grid": "#1a1a3e",
+      "snakeHead": "#00ffff",
+      "snakeBody": "#00cccc",
+      "obstacle": "#ff00ff"
+    }
+  },
+  "aiStrategies": {
+    "aggressive": {
+      "name": "追击型",
+      "foodPriority": 0.8,
+      "playerChase": 0.9,
+      "patrolChance": 0.1
+    },
+    "defensive": {
+      "name": "保守型",
+      "foodPriority": 0.6,
+      "playerChase": 0.3,
+      "patrolChance": 0.5
+    },
+    "random": {
+      "name": "随机型",
+      "foodPriority": 0.4,
+      "playerChase": 0.4,
+      "patrolChance": 0.4
+    }
+  },
+  "particles": {
+    "maxParticles": 1000,
+    "gravity": 0.15,
+    "friction": 0.98,
+    "lifetime": 1500
+  },
+  "audio": {
+    "masterVolume": 0.5,
+    "effects": {
+      "eat": { "frequency": 880, "duration": 0.1, "type": "sine" },
+      "death": { "frequency": 150, "duration": 0.3, "type": "sawtooth" },
+      "powerup": { "frequency": 660, "duration": 0.2, "type": "triangle" },
+      "click": { "frequency": 440, "duration": 0.05, "type": "square" }
+    }
+  }
+}
