@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(135deg, #fef7ed 0%, #fdecd3 50%, #fad6a5 100%);
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.capsule-locked {
+  filter: blur(8px);
+  user-select: none;
+  pointer-events: none;
+}
+
+.capsule-unlocking {
+  animation: capsule-unlock 1s ease-out forwards;
+}
+
+@keyframes capsule-unlock {
+  0% {
+    transform: scale(1);
+    filter: blur(8px);
+  }
+  50% {
+    transform: scale(1.05);
+    filter: blur(4px);
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.glow-effect {
+  box-shadow: 0 0 20px rgba(240, 114, 20, 0.4), 0 0 40px rgba(240, 114, 20, 0.2);
+}
+
+.markdown-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #772d12;
+}
+
+.markdown-content h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #943412;
+}
+
+.markdown-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ba410b;
+}
+
+.markdown-content p {
+  margin-bottom: 0.75rem;
+  line-height: 1.75;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.25rem;
+}
+
+.markdown-content strong {
+  font-weight: 600;
+  color: #772d12;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content code {
+  background: rgba(240, 114, 20, 0.1);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #f07214;
+  padding-left: 1rem;
+  margin: 0.75rem 0;
+  color: #943412;
+  font-style: italic;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(240, 114, 20, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 114, 20, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 114, 20, 0.6);
+}
