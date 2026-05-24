@@ -1,0 +1,37 @@
+{
+  "base": {
+    "name": "主基地",
+    "health": 1000,
+    "size": { "width": 4, "height": 4 },
+    "cost": { "gold": 0, "wood": 0 },
+    "buildTime": 0,
+    "produces": ["worker"]
+  },
+  "barracks": {
+    "name": "兵营",
+    "health": 500,
+    "size": { "width": 3, "height": 3 },
+    "cost": { "gold": 200, "wood": 150 },
+    "buildTime": 30,
+    "produces": ["infantry", "archer"]
+  },
+  "tower": {
+    "name": "箭塔",
+    "health": 400,
+    "size": { "width": 2, "height": 2 },
+    "cost": { "gold": 150, "wood": 100 },
+    "buildTime": 20,
+    "produces": [],
+    "attack": 20,
+    "range": 6,
+    "attackSpeed": 0.8
+  },
+  "blacksmith": {
+    "name": "铁匠铺",
+    "health": 350,
+    "size": { "width": 3, "height": 2 },
+    "cost": { "gold": 300, "wood": 200 },
+    "buildTime": 25,
+    "produces": ["cavalry"]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "width": 64,
+  "height": 64,
+  "tileSize": 32,
+  "startPositions": {
+    "player": { "x": 8, "y": 8 },
+    "ai": { "x": 56, "y": 56 }
+  }
+}

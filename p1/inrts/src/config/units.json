@@ -1,0 +1,54 @@
+{
+  "worker": {
+    "name": "农民",
+    "health": 50,
+    "speed": 1.8,
+    "attack": 5,
+    "range": 1,
+    "attackSpeed": 1,
+    "visionRange": 6,
+    "cost": { "gold": 50, "wood": 0 },
+    "buildTime": 5,
+    "size": 12,
+    "population": 1
+  },
+  "infantry": {
+    "name": "步兵",
+    "health": 100,
+    "speed": 1.5,
+    "attack": 15,
+    "range": 1,
+    "attackSpeed": 1.2,
+    "visionRange": 5,
+    "cost": { "gold": 100, "wood": 20 },
+    "buildTime": 8,
+    "size": 14,
+    "population": 1
+  },
+  "archer": {
+    "name": "弓箭手",
+    "health": 60,
+    "speed": 1.6,
+    "attack": 12,
+    "range": 5,
+    "attackSpeed": 0.8,
+    "visionRange": 7,
+    "cost": { "gold": 120, "wood": 40 },
+    "buildTime": 10,
+    "size": 12,
+    "population": 1
+  },
+  "cavalry": {
+    "name": "骑兵",
+    "health": 150,
+    "speed": 2.8,
+    "attack": 25,
+    "range": 1,
+    "attackSpeed": 1,
+    "visionRange": 6,
+    "cost": { "gold": 250, "wood": 60 },
+    "buildTime": 15,
+    "size": 16,
+    "population": 2
+  }
+}

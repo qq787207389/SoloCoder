@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RTS 即时战略游戏</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #1a1a2e;
+      font-family: 'Courier New', monospace;
+    }
+
+    #app {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #game-container {
+      flex: 1;
+      position: relative;
+      display: flex;
+    }
+
+    #game-canvas {
+      flex: 1;
+      display: block;
+    }
+
+    #sidebar {
+      width: 220px;
+      background: #16213e;
+      border-left: 2px solid #4a5d23;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #top-bar {
+      height: 50px;
+      background: #0f0f23;
+      border-bottom: 2px solid #4a5d23;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      gap: 30px;
+    }
+
+    .resource {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #f1c40f;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .resource-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+    }
+
+    .gold-icon {
+      background: linear-gradient(135deg, #f1c40f, #d4af37);
+    }
+
+    .wood-icon {
+      background: linear-gradient(135deg, #8b4513, #654321);
+    }
+
+    .pop-icon {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+    }
+
+    #bottom-bar {
+      height: 140px;
+      background: #0f0f23;
+      border-top: 2px solid #4a5d23;
+      display: flex;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    #building-panel, #unit-panel {
+      flex: 1;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-content: flex-start;
+    }
+
+    .panel-title {
+      width: 100%;
+      color: #d4af37;
+      font-size: 12px;
+      margin-bottom: 4px;
+      font-weight: bold;
+    }
+
+    .action-btn {
+      width: 60px;
+      height: 60px;
+      background: #1a1a2e;
+      border: 2px solid #4a5d23;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .action-btn:hover:not(:disabled) {
+      background: #2a2a4e;
+      border-color: #6a7d43;
+      transform: translateY(-2px);
+    }
+
+    .action-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .action-btn.selected {
+      border-color: #f1c40f;
+      box-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+    }
+
+    .btn-icon {
+      font-size: 24px;
+    }
+
+    .btn-name {
+      font-size: 10px;
+      color: #ecf0f1;
+      margin-top: 2px;
+    }
+
+    .btn-cost {
+      font-size: 9px;
+      color: #f1c40f;
+    }
+
+    #minimap {
+      width: 200px;
+      height: 200px;
+      margin: 10px;
+      border: 2px solid #4a5d23;
+      background: #0a0a15;
+    }
+
+    #unit-info {
+      flex: 1;
+      padding: 10px;
+      color: #ecf0f1;
+      font-size: 12px;
+      overflow-y: auto;
+    }
+
+    .info-row {
+      margin-bottom: 8px;
+    }
+
+    .info-label {
+      color: #d4af37;
+    }
+
+    .health-bar {
+      width: 100%;
+      height: 8px;
+      background: #2c3e50;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 4px;
+    }
+
+    .health-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #e74c3c, #2ecc71);
+      transition: width 0.3s;
+    }
+
+    #selection-box {
+      position: absolute;
+      border: 2px dashed #3498db;
+      background: rgba(52, 152, 219, 0.1);
+      pointer-events: none;
+      display: none;
+    }
+
+    #game-over {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    #game-over h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    #game-over.victory h1 {
+      color: #2ecc71;
+    }
+
+    #game-over.defeat h1 {
+      color: #e74c3c;
+    }
+
+    #restart-btn {
+      padding: 15px 40px;
+      font-size: 20px;
+      background: #4a5d23;
+      color: white;
+      border: 2px solid #d4af37;
+      cursor: pointer;
+      font-family: 'Courier New', monospace;
+      transition: all 0.2s;
+    }
+
+    #restart-btn:hover {
+      background: #6a7d43;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div id="top-bar">
+      <div class="resource">
+        <div class="resource-icon gold-icon"></div>
+        <span id="gold-display">1500</span>
+      </div>
+      <div class="resource">
+        <div class="resource-icon wood-icon"></div>
+        <span id="wood-display">800</span>
+      </div>
+      <div class="resource">
+        <div class="resource-icon pop-icon"></div>
+        <span id="pop-display">5/20</span>
+      </div>
+    </div>
+    <div id="game-container">
+      <canvas id="game-canvas"></canvas>
+      <div id="selection-box"></div>
+      <div id="sidebar">
+        <canvas id="minimap"></canvas>
+        <div id="unit-info">
+          <div class="info-row"><span class="info-label">选中:</span> <span id="selected-count">0</span> 个单位</div>
+        </div>
+      </div>
+    </div>
+    <div id="bottom-bar">
+      <div id="building-panel">
+      </div>
+      <div id="unit-panel">
+      </div>
+    </div>
+    <div id="game-over">
+      <h1 id="game-over-text">胜利!</h1>
+      <button id="restart-btn">重新开始</button>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

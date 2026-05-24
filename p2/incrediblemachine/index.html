@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incredible Machine - 弹珠物理轨道</title>
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <h1>🎯 不可思议的弹珠机器</h1>
+      <div class="controls">
+        <button id="btn-play" class="btn btn-primary">▶ 运行</button>
+        <button id="btn-reset" class="btn btn-secondary">↺ 重置</button>
+        <button id="btn-undo" class="btn">↶ 撤销</button>
+        <button id="btn-redo" class="btn">↷ 重做</button>
+        <button id="btn-save" class="btn">💾 保存关卡</button>
+        <button id="btn-load" class="btn">📂 加载关卡</button>
+        <select id="level-select" class="select">
+          <option value="">选择关卡...</option>
+        </select>
+      </div>
+    </header>
+    
+    <div class="main-container">
+      <aside class="toolbox">
+        <h2>工具箱</h2>
+        <div class="tools" id="toolbox">
+        </div>
+      </aside>
+      
+      <main class="canvas-container">
+        <canvas id="game-canvas" tabindex="0"></canvas>
+        <div class="status-bar">
+          <span id="status-text">准备就绪 - 从工具箱拖拽零件到画布</span>
+        </div>
+      </main>
+    </div>
+  </div>
+  
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
