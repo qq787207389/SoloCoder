@@ -1,0 +1,60 @@
+.layer-switcher {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(10, 15, 30, 0.9);
+  border: 1px solid rgba(100, 150, 255, 0.3);
+  border-radius: 12px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.layer-switcher-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #88ccff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.layer-switcher-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.layer-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: rgba(30, 40, 60, 0.8);
+  border: 1px solid rgba(100, 150, 255, 0.2);
+  border-radius: 8px;
+  color: #aabbcc;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 13px;
+}
+
+.layer-button:hover {
+  background: rgba(50, 70, 100, 0.8);
+  border-color: rgba(100, 150, 255, 0.5);
+  color: #ffffff;
+}
+
+.layer-button.active {
+  background: linear-gradient(135deg, rgba(60, 120, 255, 0.4), rgba(100, 80, 200, 0.4));
+  border-color: rgba(100, 150, 255, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(100, 150, 255, 0.3);
+}
+
+.layer-icon {
+  font-size: 18px;
+}
+
+.layer-name {
+  font-weight: 500;
+}
