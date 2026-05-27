@@ -1,0 +1,121 @@
+.dungeon-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+}
+
+.dungeon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dungeon-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent-gold);
+}
+
+.dungeon-theme {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+.dungeon-canvas-container {
+  flex: 1;
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.dungeon-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  cursor: pointer;
+}
+
+.dungeon-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.current-room,
+.connected-rooms {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+}
+
+.current-room h3,
+.connected-rooms h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.room-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.room-type {
+  font-size: 1.1rem;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-tertiary);
+}
+
+.room-start { color: var(--color-accent-green); }
+.room-enemy { color: var(--color-accent-red); }
+.room-shop { color: var(--color-accent-gold); }
+.room-altar { color: var(--color-accent-purple); }
+.room-boss { color: #dc2626; }
+-room-exit { color: var(--color-accent-blue); }
+.room-treasure { color: var(--color-accent-orange); }
+
+.room-warning {
+  color: var(--color-accent-red);
+  font-size: 0.9rem;
+}
+
+.room-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.room-button {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.room-button:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-accent-gold);
+}
+
+.dungeon-actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+}

@@ -1,0 +1,264 @@
+.combat-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+  background: linear-gradient(180deg, #1a0d0d 0%, #0d0d1a 100%);
+}
+
+.combat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-accent-red);
+}
+
+.combat-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent-red);
+}
+
+.combat-round {
+  color: var(--color-text-secondary);
+}
+
+.combat-arena {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.combatant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.enemy-sprite {
+  font-size: 5rem;
+  filter: drop-shadow(0 0 20px currentColor);
+  animation: enemyPulse 2s ease-in-out infinite;
+}
+
+@keyframes enemyPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.player-sprite {
+  font-size: 4rem;
+}
+
+.combatant-info {
+  text-align: center;
+  width: 100%;
+}
+
+.combatant-info h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.enemy-name {
+  color: var(--color-accent-red);
+}
+
+.hp-bar {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hp-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.enemy-hp {
+  background: linear-gradient(90deg, #dc2626 0%, #e63946 100%);
+}
+
+.player-hp {
+  background: linear-gradient(90deg, #22c55e 0%, #52b788 100%);
+}
+
+.hp-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.enemy-stats,
+.player-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.combat-log {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.log-content p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  padding: 2px 0;
+}
+
+.log-content p.latest {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.combat-result {
+  text-align: center;
+  padding: var(--spacing-xl);
+}
+
+.victory {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-lg);
+  text-shadow: 0 0 20px rgba(201, 162, 39, 0.5);
+}
+
+.defeat {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--color-accent-red);
+  margin-bottom: var(--spacing-lg);
+}
+
+.combat-skills {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.skills-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-sm);
+}
+
+.skill-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-sm);
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  font-family: var(--font-body);
+}
+
+.skill-button:hover:not(:disabled) {
+  background: var(--color-bg-hover);
+  border-color: var(--color-accent-gold);
+  transform: translateY(-2px);
+}
+
+.skill-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.skill-button.attack { border-color: #e63946; }
+.skill-button.heal { border-color: #52b788; }
+.skill-button.buff { border-color: #48cae4; }
+
+.skill-icon {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+}
+
+.skill-name {
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+}
+
+.skill-damage {
+  font-size: 0.75rem;
+  color: var(--color-accent-red);
+  font-weight: 600;
+}
+
+.skill-cooldown {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--color-accent-red);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+.flee-button {
+  align-self: center;
+  min-width: 120px;
+}
+
+.combat-accessible-items {
+  background: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  border: 1px solid var(--color-border);
+}
+
+.combat-accessible-items h4 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-sm);
+}
+
+.accessible-items-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.accessible-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  border: 2px solid;
+  font-size: 0.8rem;
+}
+
+.accessible-item .item-icon {
+  font-size: 1rem;
+}

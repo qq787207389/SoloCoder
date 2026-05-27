@@ -1,0 +1,102 @@
+.camp-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: var(--spacing-lg);
+  gap: var(--spacing-md);
+  background: linear-gradient(180deg, #1a2d1a 0%, #0d0d1a 100%);
+}
+
+.camp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-accent-green);
+}
+
+.camp-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent-green);
+}
+
+.camp-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.camp-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.camp-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--color-accent-gold);
+}
+
+.section-desc {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.craftable-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.craftable-pair {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.pair-arrow {
+  color: var(--color-accent-gold);
+}
+
+.pair-result {
+  color: var(--color-accent-green);
+  font-weight: 600;
+}
+
+.no-craftable {
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}
+
+.crafting-result {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-accent-gold);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.crafting-result p {
+  color: var(--color-accent-gold);
+  font-size: 1rem;
+}

@@ -1,0 +1,182 @@
+.main-menu {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.menu-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(157, 78, 221, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(230, 57, 70, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0d1a 0%, #1a1a2e 50%, #0d0d1a 100%);
+}
+
+.menu-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(201, 162, 39, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 90% 80%, rgba(201, 162, 39, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(201, 162, 39, 0.05) 1px, transparent 1px);
+  background-size: 60px 60px, 80px 80px, 100px 100px;
+  animation: bgPulse 8s ease-in-out infinite;
+}
+
+@keyframes bgPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.menu-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: var(--spacing-xl);
+  max-width: 1200px;
+  width: 100%;
+}
+
+.game-title {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent-gold) 0%, var(--color-accent-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-sm);
+  text-shadow: 0 0 40px rgba(201, 162, 39, 0.3);
+  letter-spacing: 0.1em;
+}
+
+.game-subtitle {
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.selection-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--color-accent-gold);
+  margin-bottom: var(--spacing-lg);
+  letter-spacing: 0.1em;
+}
+
+.backpack-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.backpack-card {
+  --card-color: var(--color-accent-gold);
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  cursor: pointer;
+  transition: all var(--transition-medium);
+  position: relative;
+  overflow: hidden;
+}
+
+.backpack-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--card-color) 0%, transparent 50%);
+  opacity: 0.1;
+  transition: opacity var(--transition-medium);
+}
+
+.backpack-card:hover {
+  border-color: var(--card-color);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--card-color);
+}
+
+.backpack-card:hover::before {
+  opacity: 0.2;
+}
+
+.backpack-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.backpack-preview {
+  padding: var(--spacing-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.preview-grid {
+  display: grid;
+  gap: 1px;
+}
+
+.preview-cell {
+  width: 8px;
+  height: 8px;
+  background: var(--color-bg-tertiary);
+  border-radius: 1px;
+}
+
+.preview-cell.slot-cell {
+  background: var(--color-accent-gold);
+  opacity: 0.5;
+}
+
+.backpack-info {
+  text-align: left;
+}
+
+.backpack-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.backpack-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.5;
+}
+
+.backpack-stats {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  font-size: 0.9rem;
+}
+
+.backpack-stats span {
+  color: var(--color-text-secondary);
+}
+
+.backpack-ability {
+  font-size: 0.85rem;
+  color: var(--color-accent-gold);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.menu-footer {
+  margin-top: var(--spacing-xl);
+  color: var(--color-text-dim);
+  font-size: 0.9rem;
+}

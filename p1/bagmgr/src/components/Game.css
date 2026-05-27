@@ -1,0 +1,53 @@
+.game-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.game-main {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.game-main > * {
+  flex: 1;
+  overflow: auto;
+}
+
+.game-over-screen,
+.victory-screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-lg);
+  background: linear-gradient(180deg, #0d0d1a 0%, #1a0d0d 100%);
+}
+
+.game-over-screen h1 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--color-accent-red);
+  text-shadow: 0 0 30px rgba(230, 57, 70, 0.5);
+}
+
+.victory-screen h1 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--color-accent-gold);
+  text-shadow: 0 0 30px rgba(201, 162, 39, 0.5);
+}
+
+.game-over-screen p,
+.victory-screen p {
+  color: var(--color-text-secondary);
+  font-size: 1.2rem;
+}
