@@ -1,0 +1,73 @@
+export const GameConfig = {
+  WIDTH: 960,
+  HEIGHT: 640,
+  GRAVITY: 500,
+  INFLATE_THRUST: -800,
+  MAX_FALL_SPEED: 400,
+  MOVE_SPEED: 200,
+  AIR_RESISTANCE: 0.98,
+  INFLATION_DRAIN_RATE: 30,
+  INFLATION_RECOVER_RATE: 15,
+  INFLATION_COOLDOWN: 1000,
+  BALLOON_RADIUS: 24,
+  PLAYER_BODY_RADIUS: 16,
+  CLOUD_LIFETIME: 5000,
+  POWERUP_DURATION: 5000,
+  EVENT_INTERVAL: 15000,
+  LIGHTNING_BOOTS_MULTIPLIER: 2,
+  TEAM_SHARE_RATIO: 0.5,
+  BIRD_SPEED: 300,
+  BIRD_COUNT: 5,
+  LIGHTNING_WARNING_TIME: 1500,
+  DARK_CLOUDS_DURATION: 10000,
+  COLORS: {
+    SKY_BLUE: 0x87CEEB,
+    PLAYER1_BLUE: 0x4169E1,
+    PLAYER2_RED: 0xDC143C,
+    CLOUD_WHITE: 0xFFFFFF,
+    PILLAR_GRAY: 0x708090,
+    SPIKE_BLACK: 0x2F4F4F,
+    BALLOON_PINK: 0xFF69B4,
+    BALLOON_YELLOW: 0xFFD700,
+    BALLOON_GREEN: 0x32CD32,
+    BALLOON_PURPLE: 0x9370DB,
+    BALLOON_ORANGE: 0xFF8C00,
+    GOLD: 0xFFD700,
+    SHIELD_CYAN: 0x00FFFF,
+    DARK_CLOUDS: 0x1a1a2e,
+  } as const,
+  BALLOON_COLORS: [0xFF69B4, 0xFFD700, 0x32CD32, 0x9370DB, 0xFF8C00],
+} as const;
+
+export enum GameState {
+  MENU = 'menu',
+  PLAYING = 'playing',
+  PAUSED = 'paused',
+  GAME_OVER = 'game_over',
+}
+
+export enum GameMode {
+  SINGLE_PLAYER = 'single',
+  TWO_PLAYER = 'two_player',
+  TEAM_MODE = 'team_mode',
+}
+
+export enum PowerUpType {
+  LIGHTNING_BOOTS = 'lightning_boots',
+  SHIELD = 'shield',
+  OIL_BARREL = 'oil_barrel',
+  CLONE = 'clone',
+}
+
+export const CONTROLS = {
+  PLAYER1: {
+    LEFT: 'A',
+    RIGHT: 'D',
+    INFLATE: 'Space',
+  },
+  PLAYER2: {
+    LEFT: 'LEFT',
+    RIGHT: 'RIGHT',
+    INFLATE: 'ENTER',
+  },
+} as const;
