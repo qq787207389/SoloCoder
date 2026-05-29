@@ -1,0 +1,54 @@
+{
+  "id": "construction",
+  "type": "construction",
+  "width": 480,
+  "height": 640,
+  "beams": [
+    { "x": 16, "y": 580, "width": 448, "direction": "right" },
+    { "x": 16, "y": 500, "width": 448, "direction": "left" },
+    { "x": 16, "y": 420, "width": 448, "direction": "right" },
+    { "x": 16, "y": 340, "width": 448, "direction": "left" },
+    { "x": 16, "y": 260, "width": 448, "direction": "right" },
+    { "x": 16, "y": 180, "width": 448, "direction": "left" },
+    { "x": 16, "y": 100, "width": 448, "direction": "right" }
+  ],
+  "ladders": [
+    { "x": 200, "y": 500, "height": 80, "isBarrelPath": true },
+    { "x": 320, "y": 500, "height": 80, "isBarrelPath": false },
+    { "x": 80, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 280, "y": 420, "height": 80, "isBarrelPath": false },
+    { "x": 400, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 160, "y": 340, "height": 80, "isBarrelPath": true },
+    { "x": 360, "y": 340, "height": 80, "isBarrelPath": false },
+    { "x": 100, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 300, "y": 260, "height": 80, "isBarrelPath": false },
+    { "x": 420, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 180, "y": 180, "height": 80, "isBarrelPath": true },
+    { "x": 380, "y": 180, "height": 80, "isBarrelPath": false },
+    { "x": 240, "y": 100, "height": 80, "isBarrelPath": true }
+  ],
+  "hammers": [
+    { "x": 350, "y": 494 },
+    { "x": 120, "y": 334 },
+    { "x": 300, "y": 254 }
+  ],
+  "minecarts": [
+    { "beamIndex": 2, "startX": 50, "endX": 380, "speed": 80 }
+  ],
+  "elevators": [
+    { "x": 400, "y": 500, "topY": 340, "bottomY": 500, "speed": 60 }
+  ],
+  "fireTriggers": [
+    { "beamIndex": 1, "x": 100, "delay": 8000, "speed": 30 },
+    { "beamIndex": 3, "x": 200, "delay": 12000, "speed": 35 },
+    { "beamIndex": 4, "x": 50, "delay": 15000, "speed": 40 }
+  ],
+  "dkPosition": { "x": 60, "y": 68 },
+  "dkConfig": {
+    "throwInterval": 2500,
+    "fakeThrowChance": 0.15,
+    "rageThreshold": 0.3,
+    "barrelSpeed": 60
+  },
+  "nextLevel": "warehouse"
+}

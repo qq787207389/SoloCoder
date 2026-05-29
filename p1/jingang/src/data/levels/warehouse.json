@@ -1,0 +1,53 @@
+{
+  "id": "warehouse",
+  "type": "warehouse",
+  "width": 480,
+  "height": 640,
+  "beams": [
+    { "x": 16, "y": 580, "width": 448, "direction": "left" },
+    { "x": 16, "y": 500, "width": 448, "direction": "right" },
+    { "x": 16, "y": 420, "width": 448, "direction": "left" },
+    { "x": 16, "y": 340, "width": 448, "direction": "right" },
+    { "x": 16, "y": 260, "width": 448, "direction": "left" },
+    { "x": 16, "y": 180, "width": 448, "direction": "right" },
+    { "x": 16, "y": 100, "width": 448, "direction": "left" }
+  ],
+  "ladders": [
+    { "x": 80, "y": 500, "height": 80, "isBarrelPath": true },
+    { "x": 300, "y": 500, "height": 80, "isBarrelPath": false },
+    { "x": 180, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 400, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 120, "y": 340, "height": 80, "isBarrelPath": false },
+    { "x": 320, "y": 340, "height": 80, "isBarrelPath": true },
+    { "x": 60, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 250, "y": 260, "height": 80, "isBarrelPath": false },
+    { "x": 400, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 150, "y": 180, "height": 80, "isBarrelPath": true },
+    { "x": 350, "y": 180, "height": 80, "isBarrelPath": false },
+    { "x": 240, "y": 100, "height": 80, "isBarrelPath": true }
+  ],
+  "hammers": [
+    { "x": 250, "y": 494 },
+    { "x": 400, "y": 334 }
+  ],
+  "minecarts": [
+    { "beamIndex": 1, "startX": 40, "endX": 400, "speed": 90 },
+    { "beamIndex": 4, "startX": 60, "endX": 360, "speed": 70 }
+  ],
+  "elevators": [
+    { "x": 360, "y": 420, "topY": 260, "bottomY": 420, "speed": 55 }
+  ],
+  "fireTriggers": [
+    { "beamIndex": 0, "x": 60, "delay": 6000, "speed": 35 },
+    { "beamIndex": 2, "x": 150, "delay": 10000, "speed": 40 },
+    { "beamIndex": 5, "x": 80, "delay": 14000, "speed": 45 }
+  ],
+  "dkPosition": { "x": 380, "y": 68 },
+  "dkConfig": {
+    "throwInterval": 2200,
+    "fakeThrowChance": 0.25,
+    "rageThreshold": 0.3,
+    "barrelSpeed": 70
+  },
+  "nextLevel": "clocktower"
+}

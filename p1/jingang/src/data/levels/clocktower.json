@@ -1,0 +1,53 @@
+{
+  "id": "clocktower",
+  "type": "clocktower",
+  "width": 480,
+  "height": 640,
+  "beams": [
+    { "x": 16, "y": 580, "width": 448, "direction": "right" },
+    { "x": 16, "y": 500, "width": 448, "direction": "left" },
+    { "x": 16, "y": 420, "width": 448, "direction": "right" },
+    { "x": 16, "y": 340, "width": 448, "direction": "left" },
+    { "x": 16, "y": 260, "width": 448, "direction": "right" },
+    { "x": 16, "y": 180, "width": 448, "direction": "left" },
+    { "x": 16, "y": 100, "width": 448, "direction": "right" }
+  ],
+  "ladders": [
+    { "x": 120, "y": 500, "height": 80, "isBarrelPath": true },
+    { "x": 340, "y": 500, "height": 80, "isBarrelPath": false },
+    { "x": 60, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 240, "y": 420, "height": 80, "isBarrelPath": true },
+    { "x": 400, "y": 420, "height": 80, "isBarrelPath": false },
+    { "x": 160, "y": 340, "height": 80, "isBarrelPath": true },
+    { "x": 360, "y": 340, "height": 80, "isBarrelPath": false },
+    { "x": 80, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 280, "y": 260, "height": 80, "isBarrelPath": true },
+    { "x": 440, "y": 260, "height": 80, "isBarrelPath": false },
+    { "x": 180, "y": 180, "height": 80, "isBarrelPath": true },
+    { "x": 380, "y": 180, "height": 80, "isBarrelPath": false },
+    { "x": 240, "y": 100, "height": 80, "isBarrelPath": true }
+  ],
+  "hammers": [
+    { "x": 200, "y": 494 },
+    { "x": 350, "y": 254 }
+  ],
+  "minecarts": [],
+  "elevators": [
+    { "x": 280, "y": 500, "topY": 340, "bottomY": 500, "speed": 65 },
+    { "x": 140, "y": 260, "topY": 180, "bottomY": 260, "speed": 55 }
+  ],
+  "fireTriggers": [
+    { "beamIndex": 1, "x": 80, "delay": 5000, "speed": 40 },
+    { "beamIndex": 3, "x": 200, "delay": 9000, "speed": 45 },
+    { "beamIndex": 5, "x": 100, "delay": 12000, "speed": 50 }
+  ],
+  "lever": { "x": 430, "y": 84 },
+  "dkPosition": { "x": 60, "y": 60 },
+  "dkConfig": {
+    "throwInterval": 1800,
+    "fakeThrowChance": 0.35,
+    "rageThreshold": 0.3,
+    "barrelSpeed": 80
+  },
+  "nextLevel": null
+}
