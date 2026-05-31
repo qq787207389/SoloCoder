@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0f0f1a;
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #1a1a2e 0%, #0f0f1a 100%);
+}
+
+#gameCanvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border-radius: 8px;
+  box-shadow: 
+    0 0 60px rgba(0, 0, 0, 0.8),
+    0 0 120px rgba(11, 93, 30, 0.2),
+    inset 0 0 0 2px rgba(255, 215, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+#gameCanvas:hover {
+  box-shadow: 
+    0 0 80px rgba(0, 0, 0, 0.9),
+    0 0 150px rgba(11, 93, 30, 0.3),
+    inset 0 0 0 2px rgba(255, 215, 0, 0.15);
+}
+
+#gameCanvas:focus {
+  outline: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
